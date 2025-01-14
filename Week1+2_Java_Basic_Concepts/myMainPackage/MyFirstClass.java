@@ -2,21 +2,24 @@
 package myMainPackage;
 import CustomPackage.CustomScanner;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.Objects;
 
 
 public class MyFirstClass {
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    static CustomScanner scanner = new CustomScanner();
-    public static void main(String args[]) {
-       takeInputs();
-//    CustomScanner.mainScanner();
+
+    CustomScanner scanner = new CustomScanner();
+    static String filePath = "JavaLearningCodefod/output.txt";
+    public static void main(String args[]) throws IOException {
+//       takeInputs();
+        CustomScanner.mainScanner();
+        writeFile(filePath);
+        readFile(filePath);
     }
     static void takeInputs(){
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter the list of names (type 'exit' to complete):");
         try {
             String nameItem;
@@ -43,4 +46,21 @@ public class MyFirstClass {
 
 
     };
+    static void readFile(String path) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(path));
+
+        String line;
+        while((line = br.readLine())!=null){
+            System.out.println(line);
+        };
+        br.close();
+    };
+    static void writeFile(String path) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(path));
+        bw.write("Hello! I am Sang");
+        bw.newLine();
+        bw.newLine();
+        bw.write("Hello Codefod. I love you");
+        bw.close();
+    }
 }
