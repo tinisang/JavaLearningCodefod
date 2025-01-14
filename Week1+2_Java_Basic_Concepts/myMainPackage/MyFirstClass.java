@@ -1,10 +1,11 @@
 
 package myMainPackage;
-import static CustomPackage.CustomMath.PI;
+import static CustomPackage.CustomMath.*;
 
 public class MyFirstClass {
 
     public static void main(String args[]) {
         System.out.println(PI);
+        System.out.println(zero);
     }
 }
